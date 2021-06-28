@@ -1,17 +1,19 @@
 import justpy as jp
+from webapp import layout
 
 class About:
     path = "/about"
 
     def serve(self):
         wp = jp.QuasarPage(tailwind=True)
-        div = jp.Div(a=wp, classes='bg-gray-200 h-screen')
+
+        lay = layout.DefaultLayout(a= wp, view="hHh lpR fFf")
+        container = jp.QPageContainer(a=lay)
+
+        div = jp.Div(a=container, classes='bg-gray-200 h-screen p-4')
         jp.Div(a=div, text="This is the About Page", classes='text-4xl m-2')
         jp.Div(a=div, text="""
-        I'm baby disrupt occaecat migas stumptown truffaut meditation scenester deserunt gluten-free shaman
-         fingerstache humblebrag tumeric ullamco. Poutine prism succulents meditation nisi gluten-free chia
-          incididunt officia est. Sunt laborum veniam stumptown master cleanse austin af ea shabby chic offal
-           affogato everyday carry. Organic hella lorem, seitan put a bird on it tattooed in readymade.
+        This webapp instantly returns the definition(s) of a word that is typed in.
         """, classes='text-lg')
 
         return wp
